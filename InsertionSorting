@@ -1,0 +1,38 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        List<Integer> list = new ArrayList<>();
+        List<Integer> sortedList = new ArrayList<>();
+        list.add(4);
+        list.add(1);
+        list.add(2);
+        list.add(5);
+        list.add(3);
+
+        for (int i = 0; i < list.size(); i++) {
+            sortedList.add(list.get(i));
+            for (int j = sortedList.size() - 1; j >= 1 ; j--) {
+                if( sortedList.get(j) < sortedList.get(j - 1) ) {
+                    swap(sortedList, sortedList.get(j), sortedList.get(j - 1));
+                }
+            }
+        }
+
+        System.out.println(sortedList);
+
+    }
+
+    private static List<Integer> swap(List<Integer> sortedList, Integer num1, Integer num2) {
+        int temp = num2;
+        sortedList.set( sortedList.indexOf(num1), temp );
+        sortedList.set( sortedList.indexOf(num2), num1 );
+        return sortedList;
+    }
+}
